@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 export default function Navbar(props) {
   return (
-   <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+    <>
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#">{props.title}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@ export default function Navbar(props) {
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Action</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider"/></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
@@ -33,14 +33,18 @@ export default function Navbar(props) {
                 <a className="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            {/* <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> */}
+            <div className={`form-check form-switch-{props.mode=='dark'?'light':'dark'`}>
+              <input className="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" onClick={props.togglemode} />
+              <label className="form-check-label" htmlFor="switchCheckDefault">Switch Mode </label>
+            </div>
           </div>
         </div>
       </nav>
-   </>
+    </>
   )
 }
 
@@ -49,6 +53,6 @@ Navbar.propTypes = {
   link: PropTypes.string
 }
 
-Navbar.defaultProps={
-    title: "set title name"  // ← Will now be used if not provided
+Navbar.defaultProps = {
+  title: "set title name"  // ← Will now be used if not provided
 }
