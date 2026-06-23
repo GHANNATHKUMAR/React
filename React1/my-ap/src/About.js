@@ -11,8 +11,8 @@ export default function About() {
         color : 'white',
         backgroundColor : 'black'
     })
-    const switchtoggle = ()=>{
-        if(mystyle.color=='white'){
+    const switchtoggle = () => {
+        if (mystyle.color === 'white') {
             setstyle({
         color : 'black',
         backgroundColor : 'white'
